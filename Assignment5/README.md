@@ -4,7 +4,7 @@ min agent 여러 개(multi min agents): 유령들 -> 유령 개수에 상관없�
 각 max layer(팩맨)마다 여러 min layers(유령들)가 있도록 game tree를 확장해야 함. 이 game tree는 self.depth, self.evaluationFunction을 참고하여 임의의 depth까지 확장되어야 함.  
 
 1. minimax
-* 평가함수 -> 이미 제공된 self.evaluationFunction 사용. 이는 게임 state를 평가하여 점수를 반환하고, minimax 알고리즘에서 leaf node 평가 시 사용된다.
+* 평가함수 -> 이미 제공된 self.evaluationFunction 사용. 이는 게임 state를 평가하여 점수를 반환하고, minimax 알고리즘에서 leaf node 평가 시 사용.
 * 초기상태 minimax 값: 깊이 1, 2, 3, 4에 대해 각각 9, 8, 7, -492
 * 팩맨: 에이전트 0 / 에이전트는 인덱스가 증가하는 방향?으로 움직임.
 * 모든 minimax state는 GameState로 관리됨. getAction에 전달되거나, GameState.generateSuccessor를 통해 생성됨.
