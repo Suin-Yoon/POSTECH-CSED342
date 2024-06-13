@@ -277,31 +277,24 @@ def get_sum_variable(csp, name, variables, maxSum):
     else:
         for index, X_i in enumerate(variables):
             A_i = ('sum', name, X_i)
-            # first element
             if index == 0:
                 domains = [(0, val, val) for val in csp.values[X_i]]
-                # add A_i to CSP variables with its domains
                 csp.add_variable(A_i, domains)
             else:
                 domains = list(set([(prev[2], curr_val, prev[2] + curr_val) 
                                     for prev in csp.values[prevA_i] 
                                     for curr_val in csp.values[X_i] 
                                     if prev[2] + curr_val <= maxSum]))
-                # add A_i to CSP variables with its domains
                 csp.add_variable(A_i, domains)
-                # binary constrains under this case
                 csp.add_binary_factor(prevA_i, A_i, lambda prevA_i, A_i: prevA_i[2] == A_i[0]) 
                 
-            # binary constrain when X_i == A_i[1]
             csp.add_binary_factor(X_i, A_i, lambda X_i, A_i: X_i == A_i[1])
-            # update previous A_i
             prevA_i = A_i
-    # construct the new domain
+
     final_domain = list(set(val[2] for val in domains))
-    # print('updatedDomain', updatedDomain)
-    # add sum_var to variables with its domain
+
     csp.add_variable(sum_var, final_domain)
-    # now compare sum_var with A_i[2]
+
     csp.add_binary_factor(sum_var, A_i, lambda sum_var, A_i: sum_var == A_i[2])
     return sum_var
 
