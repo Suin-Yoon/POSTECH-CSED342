@@ -1,5 +1,6 @@
 # POSTECH-CSED342
-POSTECH CSED342(Artificial Intelligence) Assignments
+POSTECH CSED342(Artificial Intelligence) Assignments  
+Professer: Hwanjo Yu  
 
 Assignment 1. Foundations  
 Assignment 2. Sentiment Analysis  
